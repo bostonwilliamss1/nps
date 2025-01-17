@@ -269,6 +269,64 @@ a:hover {
   margin-bottom: 5px;
 }
 
+/* Info styles */
+
+.intro {
+  margin: 10px;
+  font-family: var(--bs-font-serif);
+}
+
+.intro h1 {
+  font-weight: 300;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+.infoBox{
+  margin: 10px;
+}
+
+.contact {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.contact img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.contact section {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  padding: 10px;
+  font-size: 14px;
+  max-width: 80%;
+  margin-left: 15px;
+  font-family: var(--bs-body-font-family);
+}
+
+.contact h3 {
+  font-family: var(--bs-font-serif);
+  font-size: 20px;
+}
+
 /* Utility styles */
 
 .visually-hidden {
@@ -287,4 +345,11 @@ a:hover {
 svg {
   background-color: var(--bs-black);
   fill: white;
+}
+
+@media (max-width: 550px) {
+  .info {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
 }

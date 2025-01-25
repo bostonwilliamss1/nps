@@ -1,6 +1,6 @@
 import { getParkData } from "./parkService.mjs";
+import { getInfoLinks } from "./parkService.mjs";
 
-const parkData = getParkData();
 const disclaimer = document.querySelector(".disclaimer > a");
 const title = document.querySelector("title");
 const image = document.querySelector(".hero-banner > img");
@@ -9,29 +9,7 @@ const introContent = document.querySelector(".intro");
 const infoContent = document.querySelector(".info");
 const contactContent = document.querySelector(".contact");
 
-const parkInfoLinks = [
-  {
-    name: "Current Conditions &#x203A;",
-    link: "conditions.html",
-    image: parkData.images[2].url,
-    description:
-      "See what conditions to expect in the park before leaving on your trip!"
-  },
-  {
-    name: "Fees and Passes &#x203A;",
-    link: "fees.html",
-    image: parkData.images[3].url,
-    description: "Learn about the fees and passes that are available."
-  },
-  {
-    name: "Visitor Centers &#x203A;",
-    link: "visitor_centers.html",
-    image: parkData.images[9].url,
-    description: "Learn about the visitor centers in the park."
-  }
-];
-
-function setHeaderData() {
+function setHeaderData(parkData) {
   disclaimer.href = parkData.url;
   disclaimer.innerHTML = parkData.fullName;
   title.innerHTML = parkData.name;
@@ -46,17 +24,15 @@ function setHeaderData() {
   heroBannerContent.innerHTML = parkInfoTemplate(parkData);
 }
 
-function setIntroData() {
-  const name = parkData.fullName;
-  const description = parkData.description;
-  function parkIntroTemplate() {
-    return `<h1>${name}</h1>
-    <p>${description}</p>`;
+function setIntroData(parkData) {
+  function parkIntroTemplate(parkData) {
+    return `<h1>${parkData.fullName}</h1>
+    <p>${parkData.description}</p>`;
   }
-  introContent.innerHTML = parkIntroTemplate();
+  introContent.innerHTML = parkIntroTemplate(parkData);
 }
 
-function mediaCardData() {
+function mediaCardData(parkInfoLinks) {
   function mediaCardTemplate(info) {
     return (
       `<div class="infoBox">
@@ -76,11 +52,10 @@ function getMailingAddress(addresses) {
 
 function getVoicePhone(phoneNumbers) {
   const phone = phoneNumbers.find((phone) => phone.type === "Voice");
-  console.log("phone", phone);
   return phone.phoneNumber;
 }
 
-function ContactInfoData() {
+function ContactInfoData(parkData) {
   function footerTemplate(info) {
     const mailing = getMailingAddress(info.addresses);
     const voice = getVoicePhone(info.contacts.phoneNumbers)
@@ -99,8 +74,15 @@ function ContactInfoData() {
   }
   contactContent.innerHTML = footerTemplate(parkData);
 }
+async function init() {
+  const parkData = await getParkData();
+  const links = getInfoLinks(parkData.images);
 
-setHeaderData();
-setIntroData();
-mediaCardData();
-ContactInfoData();
+  setHeaderData(parkData);
+  ContactInfoData(parkData);
+  setIntroData(parkData);
+  mediaCardData(links);
+
+}
+
+init();

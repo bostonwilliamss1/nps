@@ -1,0 +1,70 @@
+.hero-banner {
+    position: relative;
+  }
+  
+  .hero-banner img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  
+  }
+  
+  .hero-banner__content {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+  }
+  
+  .hero-banner a {
+    margin: 15px;
+    font-family: var(--bs-font-sans-serif);;
+    font-size: 35px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .hero-banner__subtitle {
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .site-title {
+    display: flex;
+    align-items: center;
+    font-family: var(--bs-font-sans-serif);
+    text-decoration: none;
+  }
+  .site-title > span {
+    font-size: 1rem;
+    margin-left: 0.3em;
+  }
+  
+  .logo {
+    height: 0;
+    width: 0;
+    margin: 0.5em;
+    display: inline-block;
+    border-top: 34px solid var(--bs-light-green);
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+  }
+  
+  .park-nav ul{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    justify-content: space-evenly;
+    background-color: black;
+  }
+  
+  .park-nav svg {
+    height: 40px;
+    width: 40px;
+  }

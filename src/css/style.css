@@ -1,3 +1,10 @@
+@import "partials/variables.css";
+@import "partials/global.css";
+@import "partials/header.css";
+@import "partials/footer.css";
+@import "partials/blocks.css";
+@import "partials/utilities.css";
+
 :root {
   --bs-black: #000;
   --bs-brown: #393423;
@@ -86,30 +93,6 @@
   --bs-highlight-bg: #fff3cd;
 }
 
-/* Global styles */
-
-* {
-  box-sizing: border-box;
-}
-img {
-  max-width: 100%;
-}
-
-body {
-  font-family: var(--bs-body-font-family);
-  font-size: 18px;
-  margin: 0;
-}
-
-a:link,
-a:visited {
-  color: var(--bs-link-color);
-}
-
-a:hover {
-  color: var(--bs-link-hover-color);
-}
-
 /* Skip links styling */
 .skip-links ul {
   list-style-type: none;
@@ -131,34 +114,6 @@ a:hover {
   z-index: 9999;
 }
 
-/* Title and logo styling */
-
-.global-header {
-  display: flex;
-  justify-content: space-between;
-  background-color: black;
-}
-
-.global-header h1 {
-  color: white;
-}
-
-.global-header__right {
-  align-items: center;
-  align-items: stretch;
-  display: flex;
-  flex-direction: row;
-}
-
-.global-nav-toggle {
-  display: flex;
-  align-items: center;
-}
-
-.global-header__right a, button {
-  margin-left: 10px;
-}
-
 .search-icon {
   padding-right: 15px;
   border-right: 1px solid #878787;
@@ -166,190 +121,5 @@ a:hover {
   align-items: center;
 }
 
-.global-header button {
-  background: none;
-  border: none;
-  font: inherit;
-  color: white;
-  cursor: pointer;
-  align-items: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-right: 10px;
-}
 
-.global-header__right .icon {
-  height: 30px;
-  width: 30px;
-}
-.hero-banner {
-  position: relative;
-}
 
-.hero-banner img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-
-}
-
-.hero-banner__content {
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 15px;
-}
-
-.hero-banner a {
-  margin: 15px;
-  font-family: var(--bs-font-sans-serif);;
-  font-size: 35px;
-  text-decoration: none;
-  color: white;
-}
-
-.hero-banner__subtitle {
-  color: white;
-  display: flex;
-  flex-direction: column;
-}
-
-.site-title {
-  display: flex;
-  align-items: center;
-  font-family: var(--bs-font-sans-serif);
-  text-decoration: none;
-}
-.site-title > span {
-  font-size: 1rem;
-  margin-left: 0.3em;
-}
-
-.logo {
-  height: 0;
-  width: 0;
-  margin: 0.5em;
-  display: inline-block;
-  border-top: 34px solid var(--bs-light-green);
-  border-left: 13px solid transparent;
-  border-right: 13px solid transparent;
-}
-
-.park-nav ul{
-  display: flex;
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-  justify-content: space-evenly;
-  background-color: black;
-}
-
-.park-nav svg {
-  height: 40px;
-  width: 40px;
-}
-
-.park-nav ul li a {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: white;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  align-items: center;
-}
-
-.park-nav ul li a span {
-  margin-bottom: 5px;
-}
-
-/* Info styles */
-
-.intro {
-  margin: 10px;
-  font-family: var(--bs-font-serif);
-}
-
-.intro h1 {
-  font-weight: 300;
-}
-
-.info {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto;
-}
-
-.infoBox{
-  margin: 10px;
-}
-
-.contact {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.contact img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-.contact section {
-  position: relative;
-  z-index: 1;
-  text-align: left;
-  padding: 10px;
-  font-size: 14px;
-  max-width: 80%;
-  margin-left: 15px;
-  font-family: var(--bs-body-font-family);
-}
-
-.contact h3 {
-  font-family: var(--bs-font-serif);
-  font-size: 20px;
-}
-
-/* Utility styles */
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
-svg {
-  background-color: var(--bs-black);
-  fill: white;
-}
-
-@media (max-width: 550px) {
-  .info {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-}

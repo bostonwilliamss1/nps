@@ -1,96 +1,39 @@
-.intro {
-margin: 10px;
-font-family: var(--bs-font-serif);
+/* Skip links styling */
+.skip-links ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
 }
 
-.intro h1 {
-font-weight: 300;
+.skip-links a {
+  font-size: 11px;
+  font-size: 0.6875rem;
+  position: absolute;
+  right: 20px;
+  top: -200px;
+  z-index: -1;
 }
 
-.info {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-grid-template-rows: auto;
+.skip-links a:focus {
+  top: 2px;
+  z-index: 9999;
 }
 
-.infoBox{
-margin: 10px;
+/* Media card styles */
+
+.media-card a {
+  text-decoration: none;
+  color: var(--bs-black);
 }
 
-.contact {
-position: relative;
-width: 100%;
-height: auto;
-max-height: 300px;
-display: flex;
-align-items: center;
-justify-content: center;
-overflow: hidden;
+.media-card a:hover {
+  color: var(--bs-crete);
 }
-
-.contact img {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-object-fit: cover;
-z-index: -1;
+.media-card h3 {
+  margin: 0.5rem 0;
 }
-
-.contact section {
-position: relative;
-z-index: 1;
-text-align: left;
-padding: 10px;
-font-size: 14px;
-max-width: 80%;
-margin-left: 15px;
-font-family: var(--bs-body-font-family);
-}
-
-.contact h3 {
-font-family: var(--bs-font-serif);
-font-size: 20px;
-}
-
-/* Utility styles */
-
-.visually-hidden {
-position: absolute;
-width: 1px;
-height: 1px;
-margin: -1px;
-border: 0;
-padding: 0;
-white-space: nowrap;
-clip-path: inset(100%);
-clip: rect(0 0 0 0);
-overflow: hidden;
-}
-
-svg {
-background-color: var(--bs-black);
-fill: white;
-}
-
-@media (max-width: 550px) {
-.info {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-}
-}
-
-.park-nav ul li a {
-display: flex;
-flex-direction: column;
-text-decoration: none;
-color: white;
-margin-bottom: 10px;
-margin-top: 10px;
-align-items: center;
-}
-
-.park-nav ul li a span {
-margin-bottom: 5px;
+.media-card > p {
+  font-size: 0.8em;
+  line-height: 1.5;
+  color: var(--bs-grey-2);
 }

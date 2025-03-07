@@ -29,19 +29,35 @@ function enableNavigation() {
   const subMenuToggles = document.querySelectorAll(
     ".global-nav__split-button__toggle"
   );
+
   menuButton.addEventListener("click", (ev) => {
-    let target = ev.target;
+    let target = ev.target.closest("button");
     document.querySelector(".global-nav").classList.toggle("show");
-    if (target.tagName != "BUTTON") {
-      target = target.closest("button");
-    }
-    if (document.querySelector(".global-nav").classList.contains("show")) {
-      target.setAttribute("aria-expanded", true);
-    } else {
-      target.setAttribute("aria-expanded", false);
-    }
+
+    target.setAttribute(
+      "aria-expanded",
+      document.querySelector(".global-nav").classList.contains("show")
+    );
 
     console.log("toggle");
+  });
+
+  subMenuToggles.forEach((toggle) => {
+    toggle.addEventListener("click", (ev) => {
+      let target = ev.target.closest("button");
+      let subMenu = target.nextElementSibling;
+
+      if (subMenu && subMenu.classList.contains("global-nav__list")) {
+        const isExpanded = subMenu.classList.contains("show");
+
+        document.querySelectorAll(".global-nav__list").forEach((menu) => {
+          menu.classList.remove("show");
+          menu.previousElementSibling.setAttribute("aria-expanded", false);
+        });
+        subMenu.classList.toggle("show", !isExpanded);
+        target.setAttribute("aria-expanded", !isExpanded);
+      }
+    });
   });
 }
 

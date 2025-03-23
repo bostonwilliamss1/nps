@@ -35,8 +35,6 @@ main {
   flex: 0 0 auto;
 }
 
-/* visitor styles */
-
 .visitor > details > ul {
   list-style: none;
   padding: 0;

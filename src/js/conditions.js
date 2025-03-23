@@ -20,7 +20,7 @@ function setAlerts(alerts) {
 }
 
 function setVisitorCenters(centers) {
-  const centersContainer = document.querySelector(".visitor ul");
+  const centersContainer = document.querySelector(".visitor-centers ul");
   const html = centers.map(visitorCenterTemplate);
   centersContainer.insertAdjacentHTML("afterbegin", html.join(""));
 }

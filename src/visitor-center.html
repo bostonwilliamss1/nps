@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>[Park Name]</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <script type="module" src="js/conditions.js" defer></script>
+    <link rel="stylesheet" href="css/visitor-center.css" />
+    <script type="module" src="js/visitor-center.js" defer></script>
   </head>
   <body>
     <p class="disclaimer">
@@ -135,27 +135,37 @@
       </section>
     </header>
     <main id="main">
-      <h1>Current Conditions</h1>
-      <section class="alerts">
-        <h2>Alerts</h2>
-        <ul></ul>
+      <h1 class="vc-name">
+        <svg class="icon" role="presentation" focusable="false">
+          <use
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xlink:href="/images/sprite.symbol.svg#ranger-station"
+          ></use>
+        </svg>
+      </h1>
+
+      <section class="vc-info">
+        <figure>
+          <img alt="center image" />
+          <figcaption>
+            [visitor center image] <span>[attribution]</span>
+          </figcaption>
+        </figure>
+        <p></p>
       </section>
-      <section class="visitor">
-        <h2>Visitor Services</h2>
-        <details name="current-details">
-          <summary>Visitor Centers</summary>
-          <ul></ul>
-        </details>
-      </section>
-      <section class="activities">
-        <h2>Activities</h2>
-        <details name="current-details">
-          <summary>All Activities</summary>
-          <ul></ul>
-        </details>
-      </section>
-      <section class="visitor-centers">
-        <h2>Visitor Centers</h2>
+
+      <section class="vc-details-list"></section>
+
+      <section class="vc-gallery">
+        <h2>
+          <svg class="icon" role="presentation" focusable="false">
+            <use
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="/images/sprite.symbol.svg#camera-alt"
+            ></use>
+          </svg>
+          Image Gallery
+        </h2>
         <ul></ul>
       </section>
     </main>

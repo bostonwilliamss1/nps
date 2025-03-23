@@ -61,13 +61,106 @@ export function alertTemplate(alert) {
 }
 
 export function visitorCenterTemplate(center) {
+  console.log("center", center);
   return `<li class="visitor-center">
-  <h4>${center.name}</h4>
-  <p>${center.description}</p>
-  <p>${center.directionsInfo}</p>
+    <h4><a href="visitor-center.html?id=${center.id}">${center.name}</a></h4>
+    <p>${center.description}</p>
+    <p>${center.directionsInfo}</p>
   </li>`;
 }
 
 export function activityListTemplate(activities) {
   return activities.map((activity) => `<li>${activity.name}</li>`).join("");
+}
+
+export function vcDetailsTemplate({ id, iconId, summary, content }) {
+  return `<details name="vc-details" id="${id}">
+    <summary>
+      <svg class="icon" role="presentation" focusable="false">
+        <use xlink:href="/images/sprite.symbol.svg#${iconId}"></use>
+      </svg>
+      ${summary}
+    </summary>
+    ${content}
+  </details>`;
+}
+
+// Already added ✅
+export function listTemplate(data, contentTemplate) {
+  const html = data.map(contentTemplate);
+  return `<ul>${html.join("")}</ul>`;
+}
+
+// ✅ Title with icon
+export function vcTitleTemplate(text) {
+  return `<svg class="icon"><use xlink:href="/images/sprite.symbol.svg#ranger-station"></use></svg> ${text}`;
+}
+
+// ✅ Visitor center image + description
+export function vcInfoTemplate(data) {
+  const image = data.images[0];
+  return `<figure>
+            <img src="${image.url}" alt="${image.altText}" />
+            <figcaption>${image.title} <span>${image.credit}</span></figcaption>
+          </figure>
+          <p>${data.description}</p>`;
+}
+
+// ✅ Individual gallery item
+export function vcImageTemplate(data) {
+  return `<li><img src="${data.url}" alt="${data.altText}"></li>`;
+}
+
+// ✅ Amenity list item
+export function vcAmenityTemplate(data) {
+  return `<li>${data}</li>`;
+}
+
+// ✅ Directions text
+export function vcDirectionsTemplate(data) {
+  return `<p>${data}</p>`;
+}
+
+// ✅ Addresses (physical & mailing)
+export function vcAddressesListTemplate(data) {
+  const physical = data.find((a) => a.type === "Physical");
+  const mailing = data.find((a) => a.type === "Mailing");
+
+  let html = "";
+
+  if (physical) {
+    html += `<section>
+      <h3>Physical Address</h3>
+      <address>
+        ${physical.line1}<br />
+        ${physical.city}, ${physical.stateCode} ${physical.postalCode}
+      </address>
+    </section>`;
+  }
+
+  if (mailing) {
+    html += `<section>
+      <h3>Mailing Address</h3>
+      <address>
+        ${mailing.line1}<br />
+        ${mailing.city}, ${mailing.stateCode} ${mailing.postalCode}
+      </address>
+    </section>`;
+  }
+
+  return html;
+}
+
+export function vcContactsTemplate(data) {
+  const email = data.emailAddresses?.[0]?.emailAddress || "Unavailable";
+  const phone = data.phoneNumbers?.[0]?.phoneNumber || "Unavailable";
+
+  return `<section class="vc-contact__email">
+            <h3>Email Address</h3>
+            <a href="mailto:${email}">${email}</a>
+          </section>
+          <section class="vc-contact__phone">
+            <h3>Phone numbers</h3>
+            <a href="tel:+1${phone}">${phone}</a>
+          </section>`;
 }
